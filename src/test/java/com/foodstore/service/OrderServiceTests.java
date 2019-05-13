@@ -2,10 +2,11 @@ package com.foodstore.service;
 
 import com.foodstore.entity.Order;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -13,10 +14,16 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/spring-beans.xml", "/spring-mvc.xml", "/spring-shiro-web.xml"})
 @WebAppConfiguration
-@DirtiesContext
 public class OrderServiceTests {
     @Autowired
+    private JdbcTemplate template;
+    @Autowired
     private OrderService service;
+
+    @Before
+    public void reset() {
+        template.update("delete from sys_order");
+    }
 
     @Test
     public void test_createOrder_expectCreated() {
