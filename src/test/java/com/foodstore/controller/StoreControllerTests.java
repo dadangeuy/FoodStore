@@ -106,7 +106,7 @@ public class StoreControllerTests {
     }
 
     @Test
-    public void test_submit() throws Exception {
+    public void test_openSubmit() throws Exception {
         mvc
                 .perform(
                         post("/submit")
