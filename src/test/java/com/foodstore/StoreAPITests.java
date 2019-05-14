@@ -1,4 +1,4 @@
-package com.foodstore.controller;
+package com.foodstore;
 
 import org.hamcrest.core.StringStartsWith;
 import org.junit.Before;
@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/spring-beans.xml", "/spring-mvc.xml", "/spring-shiro-web.xml"})
 @WebAppConfiguration
-public class StoreControllerTests {
+public class StoreAPITests {
     @Autowired
     private WebApplicationContext context;
     private MockMvc mvc;
